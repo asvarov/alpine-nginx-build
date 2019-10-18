@@ -1,5 +1,3 @@
-Виталик Бандурка КВП, [18.10.19 22:43]
-➜  nginx git:(master) cat Jenkinsfile
 pipeline {
     agent any
 
