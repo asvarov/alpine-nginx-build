@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...$BUILD_NUMBER'
-                docker.build registry + ":$BUILD_NUMBER"
+                sh "docker build ."
             }
         }
         stage('Test') {
