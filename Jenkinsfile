@@ -11,7 +11,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    out = sh script: 'docker ps -f name=blue -q'
+                    out = sh script: 'docker ps -f name=blue -q', returnStdout: true
                     if (out) {
                         echo 'I only execute on the master branch'
                         DEPLOY_ENV_NEW = "green"
