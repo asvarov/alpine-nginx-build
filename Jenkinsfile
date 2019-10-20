@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building...$BUILD_NUMBER'
                 sh "whoami && ls -lah"
-                sh "docker build ."
+                sh "docker build . -t $BUILD_TAG"
             }
         }
         stage('Test') {
