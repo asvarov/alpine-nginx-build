@@ -8,6 +8,9 @@ else
     OLD="green"
 fi
 
+echo $ENV > env_new.txt
+echo $OLD > env_old.txt
+
 echo "Stopping "$OLD" container"
 docker-compose --project-name=$OLD stop
 
