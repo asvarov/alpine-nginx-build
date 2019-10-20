@@ -8,10 +8,10 @@ echo "Checkiong "$DEPLOY_ENV_NEW" container"
 if  curl --output /dev/null --silent --retry 5 --show-error --head --fail ${EXTERNAL_IP}
   then
         echo "Removing "$DEPLOY_ENV_OLD" container"
-        docker rm -f $(docker ps -af name=$DEPLOY_ENV_OLD -q)
+        #docker rm -f $(docker ps -af name=$DEPLOY_ENV_OLD -q)
   else
         echo "Removing "$DEPLOY_ENV_NEW" container"
-        docker rm -f $(docker ps -af name=$DEPLOY_ENV_NEW -q)
+        #docker rm -f $(docker ps -af name=$DEPLOY_ENV_NEW -q)
 
         echo "Waiting..."
         sleep 5s
