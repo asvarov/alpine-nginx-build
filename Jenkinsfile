@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...$BUILD_NUMBER'
+                sh "ls -lah"
                 sh "docker build ."
             }
         }
