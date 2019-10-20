@@ -3,7 +3,6 @@
 echo "Checkiong "$DEPLOY_ENV_NEW" container"
 if  curl --output /dev/null --silent --retry 5 --show-error --head --fail ${1}
   then
-        echo ""
         echo "Removing "$DEPLOY_ENV_OLD" container"
         docker rm -f $(docker ps -af name=$DEPLOY_ENV_OLD -q)
   else
