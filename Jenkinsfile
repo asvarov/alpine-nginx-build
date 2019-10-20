@@ -21,14 +21,14 @@ pipeline {
                     }
                     EXTERNAL_IP = sh script: 'curl --silent ifconfig.so', returnStdout: true
                 }
-                echo 'Deploying...'
-                sh 'chmod +x deploy.sh && ./deploy.sh'
+                echo "Deploying ${DEPLOY_ENV_NEW} ..."
+                sh "chmod +x deploy.sh && ./deploy.sh ${DEPLOY_ENV_NEW} ${DEPLOY_ENV_OLD}"
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                sh "chmod +x test_rollback.sh && ./test_rollback.sh ${EXTERNAL_IP} "
+                echo "Testing ${DEPLOY_ENV_NEW} ..."
+                sh "chmod +x test_rollback.sh && ./test_rollback.sh ${DEPLOY_ENV_NEW} ${DEPLOY_ENV_OLD} ${EXTERNAL_IP}"
             }
         }
     }
