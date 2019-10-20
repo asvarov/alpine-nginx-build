@@ -11,7 +11,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Testing..'
-                sh 'docker-compose --project-name="GREEN" up -d '
+                sh 'docker-compose --project-name "GREEN" up -d'
             }
         }
         stage('Test') {
