@@ -23,16 +23,16 @@ pipeline {
                     }
                 }
                 echo 'Deploying...'
-                echo '${DEPLOY_ENV_NEW}'
-                echo '${env.DEPLOY_ENV_OLD}'
+                echo "${DEPLOY_ENV_NEW}"
+                echo "${env.DEPLOY_ENV_OLD}"
                 sh 'chmod +x deploy.sh && ./deploy.sh'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                echo '${DEPLOY_ENV_NEW}'
-                echo '${env.DEPLOY_ENV_OLD}'
+                echo "${DEPLOY_ENV_NEW}"
+                echo "${env.DEPLOY_ENV_OLD}"
                 sh 'chmod +x test_rollback.sh && ./test_rollback.sh "34.254.189.66"'
             }
         }
