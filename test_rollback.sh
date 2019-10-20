@@ -13,10 +13,10 @@ if  curl --output /dev/null --silent --retry 5 --show-error --head --fail ${1}
   then
         echo ""
         echo "Removing "$OLD" container"
-        docker rm -f $(docker ps -f name=$OLD -q)
+        docker rm -f $(docker ps -af name=$OLD -q)
   else
         echo "Removing "$ENV" container"
-        docker rm -f $(docker ps -f name=$ENV -q)
+        docker rm -f $(docker ps -af name=$ENV -q)
 
         echo "Waiting..."
         sleep 5s
