@@ -2,6 +2,6 @@ version: '2.1'
 
 services:
   nginx:
-      image: asvarov/nginx:27
+      image: asvarov/${JOB_NAME}:${BUILD_NUMBER}
       ports:
         - 80:80
