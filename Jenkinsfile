@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...$BUILD_NUMBER'
-                sh "whoami && ls -lah"
+                echo 'Building...'
                 sh "docker build . -t asvarov/${JOB_NAME}:${BUILD_NUMBER}"
             }
         }
-        stage('Test') {
+        stage('Deploy') {
             steps {
                 echo 'Testing..'
+                sh 'docker-compose --project-name="GREEN" up -d '
             }
         }
-        stage('Deploy') {
+        stage('Test') {
             steps {
                 echo 'Deploying....'
             }
