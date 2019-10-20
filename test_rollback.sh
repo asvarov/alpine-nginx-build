@@ -1,14 +1,14 @@
 #!/bin/sh
-
+set -x
 export DEPLOY_ENV_NEW=${1}
 export DEPLOY_ENV_OLD=${2}
 export EXTERNAL_IP=${3}
 
-if [ "x$DEPLOY_ENV_NEW" != "x" ]; then
+if [ "x$DEPLOY_ENV_NEW" = "x" ]; then
   echo "DEPLOY_ENV_NEW is null > exit 1" && exit 1
-elif [ "x$DEPLOY_ENV_OLD" != "x" ]; then
+elif [ "x$DEPLOY_ENV_OLD" = "x" ]; then
   echo "DEPLOY_ENV_OLD is null > exit 1" && exit 1
-elif [ "x$EXTERNAL_IP" != "x" ]; then
+elif [ "x$EXTERNAL_IP" = "x" ]; then
   echo "EXTERNAL_IP is null > exit 1" && exit 1  
 fi;
 
