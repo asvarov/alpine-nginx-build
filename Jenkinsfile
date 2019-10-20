@@ -17,6 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
+                sh 'chmod +x test_rollback.sh && ./test_rollback.sh "34.254.189.66"'
             }
         }
     }
