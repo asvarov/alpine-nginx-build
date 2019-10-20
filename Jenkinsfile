@@ -19,7 +19,7 @@ pipeline {
                         DEPLOY_ENV_NEW = "blue"
                         DEPLOY_ENV_OLD = "green"
                     }
-                    EXTERNAL_IP = sh script: 'curl ifconfig.so', returnStdout: true
+                    EXTERNAL_IP = sh script: 'curl --silent ifconfig.so', returnStdout: true
                 }
                 echo 'Deploying...'
                 sh 'chmod +x deploy.sh && ./deploy.sh'
