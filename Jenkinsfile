@@ -13,27 +13,22 @@ pipeline {
                 script {
                     out = sh script: 'docker ps -f name=blue -q', returnStdout: true
                     if (out) {
-                        echo 'I only execute on the master branch'
                         DEPLOY_ENV_NEW = "green"
-                        env.DEPLOY_ENV_OLD = "blue"
+                        DEPLOY_ENV_OLD = "blue"
                     } else {
-                        echo 'I execute elsewhere'
                         DEPLOY_ENV_NEW = "blue"
-                        env.DEPLOY_ENV_OLD = "green"
+                        DEPLOY_ENV_OLD = "green"
                     }
+                    EXTERNAL_IP = sh script: 'curl ifconfig.so', returnStdout: true
                 }
                 echo 'Deploying...'
-                echo "${DEPLOY_ENV_NEW}"
-                echo "${env.DEPLOY_ENV_OLD}"
                 sh 'chmod +x deploy.sh && ./deploy.sh'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                echo "${DEPLOY_ENV_NEW}"
-                echo "${env.DEPLOY_ENV_OLD}"
-                sh 'chmod +x test_rollback.sh && ./test_rollback.sh "34.254.189.66"'
+                sh "chmod +x test_rollback.sh && ./test_rollback.sh ${EXTERNAL_IP} "
             }
         }
     }
