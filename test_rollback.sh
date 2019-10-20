@@ -5,7 +5,7 @@ export DEPLOY_ENV_OLD=${2}
 export EXTERNAL_IP=${3}
 
 echo "Checkiong "$DEPLOY_ENV_NEW" container"
-if  curl --output /dev/null --silent --retry 5 --show-error --head --fail ${1}
+if  curl --output /dev/null --silent --retry 5 --show-error --head --fail ${EXTERNAL_IP}
   then
         echo "Removing "$DEPLOY_ENV_OLD" container"
         docker rm -f $(docker ps -af name=$DEPLOY_ENV_OLD -q)
