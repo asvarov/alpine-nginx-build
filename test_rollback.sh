@@ -1,5 +1,9 @@
 #!/bin/sh
 
+export DEPLOY_ENV_NEW=${1}
+export DEPLOY_ENV_OLD=${2}
+export EXTERNAL_IP=${3}
+
 echo "Checkiong "$DEPLOY_ENV_NEW" container"
 if  curl --output /dev/null --silent --retry 5 --show-error --head --fail ${1}
   then
