@@ -10,13 +10,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Testing..'
-                sh 'docker-compose --project-name "GREEN" up -d'
+                echo 'Deploying...'
+                sh './deploy.sh
             }
         }
         stage('Test') {
             steps {
-                echo 'Deploying....'
+                echo 'Testing...'
             }
         }
     }
